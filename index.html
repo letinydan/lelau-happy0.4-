@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Laury Lautman</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', cursive;
+      background: #ffe6f0;
+      color: #6d2e46;
+    }
+    header {
+      background: #ffb6c1;
+      padding: 30px;
+      text-align: center;
+      font-size: 32px;
+      animation: fadeIn 3s ease-in-out;
+    }
+    .section {
+      padding: 30px;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+    .gallery img {
+      width: 100%;
+      max-width: 250px;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .caption {
+      text-align: center;
+      margin-top: 5px;
+      font-style: italic;
+    }
+    
+.playlist {
+  background: #fff0f5;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin: 20px auto;
+  max-width: 900px;
+}
+
+
+
+    .playlist h3 {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      margin-top: 0;
+    }
+    .lyric {
+      font-style: italic;
+      margin: 10px 0;
+    }
+    .quiz, .love-meter {
+      background: #fff0f5;
+      padding: 20px;
+      margin: 30px auto;
+      border-radius: 15px;
+      max-width: 700px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    .question input[type="text"], .question select {
+      padding: 8px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      width: 100%;
+    }
+    button {
+      padding: 10px 20px;
+      background: #ff69b4;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    #loveResult {
+      font-size: 24px;
+      text-align: center;
+      margin-top: 20px;
+      display: none;
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  
+
+
+
+.quiz h2 {
+  font-family: 'Pacifico', cursive;
+  font-size: 28px;
+  color: #d6336c;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.question label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #6d2e46;
+}
+
+.question input,
+.question select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  margin-bottom: 20px;
+  background-color: #fff;
+}
+
+button {
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #ff85b3;
+}
+
+/* Mobile tweaks */
+@media (max-width: 480px) {
+  .quiz h2 {
+    font-size: 24px;
+  }
+
+  .question input,
+  .question select {
+    font-size: 14px;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+
+.gallery img {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+}
+
+/* Melhor leitura nos trechos de música */
+
+
+/* Espaço extra entre botão e resultado */
+#meter + button {
+  margin-bottom: 20px;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+@keyframes glow {
+  0% { box-shadow: 0 0 10px #ff80ab; }
+  50% { box-shadow: 0 0 25px #ff4081; }
+  100% { box-shadow: 0 0 10px #ff80ab; }
+}
+
+
+@media (min-width: 768px) {
+  .section, .playlist, .quiz, .love-meter {
+    max-width: 80%;
+    margin: 0 auto 40px auto;
+  }
+  
+  button {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .playlist, .quiz, .love-meter {
+    max-width: 60%;
+  }
+}
+
+</style>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Quicksand', sans-serif !important; }
+  header { font-family: 'Segoe UI', cursive !important; }
+  
+.playlist {
+  background: #fff0f5;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin: 20px auto;
+  max-width: 900px;
+}
+
+
+
+  #loveResult { font-family: 'Pacifico', cursive !important; white-space: pre-wrap; }
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+@keyframes glow {
+  0% { box-shadow: 0 0 10px #ff80ab; }
+  50% { box-shadow: 0 0 25px #ff4081; }
+  100% { box-shadow: 0 0 10px #ff80ab; }
+}
+
+
+@media (min-width: 768px) {
+  .section, .playlist, .quiz, .love-meter {
+    max-width: 80%;
+    margin: 0 auto 40px auto;
+  }
+  
+  button {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .playlist, .quiz, .love-meter {
+    max-width: 60%;
+  }
+}
+
+</style>
+
+</head>
+<body>
+  <header>
+    Para o amor da/pra minha vida, com todo o meu carinho!
+  </header>
+
+  <section class="section">
+    <h2 style="text-align:center;">Momentinhos</h2>
+    <div class="gallery">
+      <div>
+        <img src="studio-ghibli.png" alt="Studio Ghibli">
+        <div class="caption">Nós no Studio Ghibli!</div>
+      </div>
+      <div>
+        <img src="foto-favorita-dela.webp" alt="Foto favorita minha">
+        <div class="caption">Sua foto predileta minha.</div>
+      </div>
+      <div>
+        <img src="foto-favorita-sua.jpg" alt="Foto favorita sua">
+        <div class="caption">Minha foto predileta sua.</div>
+      </div>
+      <div>
+        <img src="zeus.jpg" alt="Zeus">
+        <div class="caption">Zeus modo sério.</div>
+      </div>
+      <div>
+        <img src="tchuca.jpg" alt="Tchuca">
+        <div class="caption">Tchuca desespero.</div>
+      </div>
+      <div>
+        <img src="playlist-cover.png" alt="Capa da playlist" style="display: block; margin: 0 auto;">
+        <div class="caption">Capa da minha playlist para você! <3</div>
+      </div>
+    </div>
+  </section>
+
+<section class="section" id="loveLetter" style="display:none;">
+  <h2 style="text-align:center; font-family: 'Pacifico', cursive; color: #d6336c;">Carta de Amor</h2>
+  <div style="background: #fff0f5; padding: 25px; border-radius: 15px; max-width: 800px; margin: 0 auto; font-size: 18px; line-height: 1.8; color: #6d2e46; box-shadow: 0 4px 12px rgba(0,0,0,0.1); white-space: pre-wrap;">
+    Feliz 4 meses, minha princesa!! Obrigada por todo esse tempo ao seu lado, amo ser sua namorada.
+
+    Todos os momentos contigo são muito importantes e significativos para mim, eu amo nossas conversas e tempo de qualidade mais que tudo. Você é minha pessoa favorita e eu faço de tudo por você, meu amor.
+
+    Aprecio muito o quanto você busca me entender e conversar sobre tudo, sinto seu carinho e apoio de forma absurda e você é a minha pessoa de conforto. Obrigada por escolher estar comigo todos os dias, mesmo vendo boa parte das minhas versões, você praticamente me conhece como um todo e continua comigo. Me apaixono mais e mais por você, a cada dia que passa. Tudo sobre você me faz ser completamente caidinha por você, gatinha.
+
+    Prometo te amar mesmo quando não for novidade e nunca vou me cansar de você. Feliz 4 meses de infinitos que virão! Eu te amo.
+  </div>
+  <div style="text-align:center; margin-top: 20px;">
+    <audio id="loveSong" controls>
+      <source src="infrunami-steve-lacy.mp3" type="audio/mp3">
+      Seu navegador não suporta áudio.
+    </audio>
+  </div>
+</section>
+
+
+  
+<section class="section">
+  <h2 style="text-align:center;">Rocks da sua playlist</h2>
+  <div class="playlist">
+    <h3>1. Sleeping With Sirens – <em>If I'm James Dean, You're Audrey Hepburn</em></h3>
+    <div class="lyric-box" style="background-color: #e8210c;">
+      They say the lover is forever<br>
+      Your forever is all that I need<br>
+      Please stay as long as you need<br>
+      Can't promise the things won't be broken <br>
+      But I swear that I will never leave<br>
+      Please stay forever with me
+    </div>
+
+    <h3>2. Pierce The Veil – <em>I Don't Care If You're Contagious</em></h3>
+    <div class="lyric-box" style="background-color: #547e7d;">
+      And I don't care if you're sick<br>
+      I don't care if you're contagious <br>
+      I would kiss you even if you were dead<br>
+      Would somebody make me go blind for the rest of my life?<br>
+      'Cause I'd do anything to hold your hand
+    </div>
+
+    <h3>3. Guns N' Roses – <em>This I Love</em></h3>
+    <div class="lyric-box" style="background-color: #827548;">
+      So, if she's somewhere near me, I hope to God she hears me<br>
+      There's no one else could ever make me feel I'm so alive <br>
+      I hoped she'd never leaved me, please, God, you must believe me<br>
+      I've searched the universe and find myself within her eyes
+    </div>
+
+    <h3>4. Evanescence – <em>Taking Over Me</em></h3>
+    <div class="lyric-box" style="background-color: #1d7aca;">
+      I believe in you<br>
+      I'll give up everything just to find you<br>
+      I have to be with you <br>
+      To live, to breath <br>
+      You're taking over me
+    </div>
+
+    <h3>5. Avenged Sevenfold – <em>Seize the Day</em></h3>
+    <div class="lyric-box" style="background-color: #e42b0f;">
+      I found you here, now, please, just stay for a while<br>
+      I can move on with you around<br>
+      I hand you my mortal life, but it will be forever?<br>
+      I'd do anything for a smile, holding you 'til our time is done<br>
+      We both know the day will come, but I don't want to leave you
+    </div>
+  </div>
+</section>
+
+<section class="quiz">
+    <h2 style="text-align:center;">Quiz do Amor</h2>
+    <div class="question">
+      <label>1. Quando nos conhecemos?</label><br>
+      <input type="text" id="q1" maxlength="5" placeholder="Ex: 1109" oninput="formatDateInput(this)">
+<small style="color: #888;">Digite apenas o dia e mês (ex: 1109 vira 11/09)</small>
+<div class="feedback" id="feedback-q1"></div>
+    </div>
+    <div class="question">
+      <label>2. Qual foi o dia em que você assistiu Arcane comigo?</label><br>
+      <select id="q2"
+><div class="feedback" id="feedback-q2"></div>>
+        <option value="">Escolha uma opção</option>
+        <option>23/11</option>
+        <option>9/11</option>
+        <option>16/11</option>
+      </select>
+    </div>
+    <div class="question">
+      <label>3. Qual é a cor do meu olho?</label><br>
+      <select id="q3"
+><div class="feedback" id="feedback-q3"></div>>
+        <option value="">Escolha uma opção</option>
+        <option>Preto</option>
+        <option>Castanho claro</option>
+        <option>Castanho escuro</option>
+      </select>
+    </div>
+    <div class="question">
+      <label>4. Qual dessas frases eu mais gosto?</label><br>
+      <select id="q4"
+><div class="feedback" id="feedback-q4"></div>>
+        <option value="">Escolha uma opção</option>
+        <option>Eu te amo da Lua até Saturno</option>
+        <option>Eu te amo daqui até Saturno</option>
+      </select>
+    </div>
+    <div class="question">
+      <label>5. Qual minha comida predileta?</label><br>
+      <select id="q5"
+><div class="feedback" id="feedback-q5"></div>>
+        <option value="">Escolha uma opção</option>
+        <option>Pizza</option>
+        <option>Frango</option>
+        <option>Aborgue</option>
+      </select>
+    </div>
+    <div id="quizErrorMsg" style="color: crimson; font-weight: bold; margin-bottom: 10px;"></div>
+<button onclick="startLoveMeter()">Enviar respostas</button>
+  </section>
+
+  <section class="love-meter" id="meterSection" style="display:none; text-align:center;">
+    
+    
+<div id="loveImageContainer" style="margin-bottom: 20px; text-align: center;">
+  <img id="loveImage" src="foto-amor.jpg" alt="Foto fofa" style="width: 200px; border-radius: 20px; transition: transform 0.5s ease, box-shadow 0.5s ease;">
+</div>
+
+    <h2 style="font-family: 'Pacifico', cursive; color: #d6336c; margin-bottom: 10px;">O quanto você me ama?</h2>
+<button id="loveButton" onclick="increaseLove()">0%</button>
+    <div id="loveResult"></div>
+  </section>
+
+<section class="section" id="loveLetter" style="display:none;">
+  <h2 style="text-align:center; font-family: 'Pacifico', cursive; color: #d6336c;">Carta de Amor</h2>
+  <div style="background: #fff0f5; padding: 25px; border-radius: 15px; max-width: 800px; margin: 0 auto; font-size: 18px; line-height: 1.8; color: #6d2e46; box-shadow: 0 4px 12px rgba(0,0,0,0.1); white-space: pre-wrap;">
+    Feliz 4 meses, minha princesa!! Obrigada por todo esse tempo ao seu lado, amo ser sua namorada.
+
+    Todos os momentos contigo são muito importantes e significativos para mim, eu amo nossas conversas e tempo de qualidade mais que tudo. Você é minha pessoa favorita e eu faço de tudo por você, meu amor.
+
+    Aprecio muito o quanto você busca me entender e conversar sobre tudo, sinto seu carinho e apoio de forma absurda e você é a minha pessoa de conforto. Obrigada por escolher estar comigo todos os dias, mesmo vendo boa parte das minhas versões, você praticamente me conhece como um todo e continua comigo. Me apaixono mais e mais por você, a cada dia que passa. Tudo sobre você me faz ser completamente caidinha por você, gatinha.
+
+    Prometo te amar mesmo quando não for novidade e nunca vou me cansar de você. Feliz 4 meses de infinitos que virão! Eu te amo.
+  </div>
+  <div style="text-align:center; margin-top: 20px;">
+    <audio id="loveSong" controls>
+      <source src="infrunami-steve-lacy.mp3" type="audio/mp3">
+      Seu navegador não suporta áudio.
+    </audio>
+  </div>
+</section>
+
+
+  
+
+
+
+<audio id="audioClick" src="click.mp3"></audio>
+<audio id="audioTyping" src="typing.mp3" loop></audio>
+<audio id="audioSubmit" src="submit.mp3"></audio>
+<audio id="audioMagic" src="magic.mp3"></audio>
+<audio id="audioKiss" src="kiss.mp3"></audio>
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    let love = 0;
+
+    function formatDateInput(input) {
+      let value = input.value.replace(/[^0-9]/g, "");
+      if (value.length >= 3) {
+        input.value = value.slice(0, 2) + '/' + value.slice(2, 4);
+      } else {
+        input.value = value;
+      }
+    }
+    window.formatDateInput = formatDateInput;
+
+    window.startLoveMeter = function () {
+      const q1 = document.getElementById('q1').value.trim();
+      const q2 = document.getElementById('q2').value;
+      const q3 = document.getElementById('q3').value;
+      const q4 = document.getElementById('q4').value;
+      const q5 = document.getElementById('q5').value;
+
+      let errors = 0;
+      document.getElementById("quizErrorMsg").innerText = "";
+
+      const answers = {
+        q1: '11/09',
+        q2: '23/11',
+        q3: 'Castanho escuro',
+        q4: 'Eu te amo da Lua até Saturno',
+        q5: 'Aborgue'
+      };
+
+      for (let i = 1; i <= 5; i++) {
+        const userAnswer = (i === 1 ? eval("q1") : eval("q" + i));
+        const feedbackEl = document.getElementById("feedback-q" + i);
+        if (userAnswer === answers["q" + i]) {
+          feedbackEl.innerHTML = "<span style='color: green;'>*resposta correta*</span>";
+        } else {
+          feedbackEl.innerHTML = "<span style='color: red;'>*resposta errada*</span>";
+          errors++;
+        }
+      }
+
+      if (errors === 0) {
+        document.getElementById('meterSection').style.display = 'block';
+        window.scrollTo(0, document.body.scrollHeight);
+      } else {
+        document.getElementById("quizErrorMsg").innerText = "Algo continua errado, tente novamente para a próxima etapa!";
+      }
+    }
+
+    window.increaseLove = function () {
+      if (love >= 100) return;
+      love += 10;
+      document.getElementById('loveButton').innerText = love + '%';
+      const loveImg = document.getElementById('loveImage');
+      loveImg.style.animation = 'pulse 0.5s ease';
+      loveImg.style.boxShadow = '0 0 25px #ff69b4';
+
+      setTimeout(() => {
+        loveImg.style.animation = '';
+        loveImg.style.boxShadow = '';
+      }, 600);
+
+      if (love === 100) {
+        document.getElementById('loveResult').style.display = 'block';
+        document.getElementById('loveResult').innerText = 'Feliz 4 meses, minha princesa!! Obrigada por todo esse tempo ao seu lado, amo ser sua namorada.\nTodos os momentos contigo são muito importantes e significativos para mim, eu amo nossas conversas e tempo de qualidade mais que tudo. Você é minha pessoa favorita e eu faço de tudo por você, meu amor.\nAprecio muito o quanto você busca me entender e conversar sobre tudo, sinto seu carinho e apoio de forma absurda e você é a minha pessoa de conforto. ...
+        document.getElementById('loveLetter').style.display = 'block';
+        const loveSong = document.getElementById('loveSong');
+        loveSong.play();
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
