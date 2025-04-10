@@ -230,14 +230,14 @@ button:hover {
       </div>
       <div>
         <img src="zeus.jpg" alt="Zeus">
-        <div class="caption">Zeus modo sério</div>
+        <div class="caption">Zeus modo sério.</div>
       </div>
       <div>
         <img src="tchuca.jpg" alt="Tchuca">
         <div class="caption">Tchuca desespero.</div>
       </div>
       <div>
-        <img src="playlist-cover.png" alt="Capa da playlist">
+        <img src="playlist-cover.png" alt="Capa da playlist" style="display: block; margin: 0 auto;">
         <div class="caption">Capa da minha playlist para você! <3</div>
       </div>
     </div>
@@ -390,79 +390,7 @@ button:hover {
 </section>
 
 
-  <script>
-    let love = 0;
-    let attempts = 1;
-
-    
-function startLoveMeter() {
-  const q1 = document.getElementById('q1').value.trim();
-  const q2 = document.getElementById('q2').value;
-  const q3 = document.getElementById('q3').value;
-  const q4 = document.getElementById('q4').value;
-  const q5 = document.getElementById('q5').value;
-
-  let erros = [];
-
-  if (q1 !== '11/09') erros.push("1. Quando nos conhecemos? Resposta correta: 11/09");
-  if (q2 !== '23/11') erros.push("2. Dia em que assistimos Arcane juntos: 23/11");
-  if (q3 !== 'Castanho escuro') erros.push("3. Cor do olho: Castanho escuro");
-  if (q4 !== 'Eu te amo da Lua até Saturno') erros.push("4. Frase favorita: Eu te amo da Lua até Saturno");
-  if (q5 !== 'Aborgue') erros.push("5. Comida predileta: Aborgue");
-
-  if (erros.length === 0) {
-    document.getElementById('meterSection').style.display = 'block';
-    window.scrollTo(0, document.body.scrollHeight);
-  } else {
-    alert("Você errou algumas respostas. Confira as certas abaixo e tente novamente com carinho:
-
-" + erros.join("\n"));
-  }
-}
-
-      const q1 = document.getElementById('q1').value.trim();
-      if (q1 !== '11/09' && attempts >= 1) {
-        alert('Ops! Resposta da pergunta 1 errada. Você não pode tentar de novo!');
-        return;
-      }
-      const q2 = document.getElementById('q2').value;
-      const q3 = document.getElementById('q3').value;
-      const q4 = document.getElementById('q4').value;
-      const q5 = document.getElementById('q5').value;
-
-      if (q2 === '23/11' && q3 === 'Castanho escuro' && q4 === 'Eu te amo da Lua até Saturno' && q5 === 'Aborgue') {
-        document.getElementById('meterSection').style.display = 'block';
-        window.scrollTo(0, document.body.scrollHeight);
-      } else {
-        alert('Você errou alguma resposta. Tente de novo com carinho!');
-      }
-    }
-
-    function increaseLove() {
-      if (love >= 100) return;
-      love += 10;
-      document.getElementById('loveButton').innerText = love + '%';
-      if (love === 100) {
-        document.getElementById('loveResult').style.display = 'block';
-        
-document.getElementById('loveResult').innerText = 'Feliz 4 meses, minha princesa!! Obrigada por todo esse tempo ao seu lado, amo ser sua namorada.';
-document.getElementById('loveLetter').style.display = 'block';
-const loveSong = document.getElementById('loveSong');
-loveSong.play();
-
-Todos os momentos contigo são muito importantes e significativos para mim, eu amo nossas conversas e tempo de qualidade mais que tudo. Você é minha pessoa favorita e eu faço de tudo por você, meu amor.
-Aprecio muito o quanto você busca me entender e conversar sobre tudo, sinto seu carinho e apoio de forma absurda e você é a minha pessoa de conforto. Obrigada por escolher estar comigo todos os dias, mesmo vendo boa parte das minhas versões, você praticamente me conhece como um todo e continua comigo. Me apaixono mais e mais por você, a cada dia que passa. Tudo sobre você me faz ser completamente caidinha por você, minha gatinha.
-Prometo te amar mesmo quando não for novidade e nunca vou me cansar de você. Feliz 4 meses de infinitos que virão! Eu te amo, meu bem!';
-      }
-    }
-  </script>
-
-<audio id="audioClick" src="click.mp3"></audio>
-<audio id="audioTyping" src="typing.mp3" loop></audio>
-<audio id="audioSubmit" src="submit.mp3"></audio>
-<audio id="audioMagic" src="magic.mp3"></audio>
-<audio id="audioKiss" src="kiss.mp3"></audio>
-
+  
 <script>
   const clickSound = document.getElementById('audioClick');
   const typingSound = document.getElementById('audioTyping');
@@ -470,7 +398,7 @@ Prometo te amar mesmo quando não for novidade e nunca vou me cansar de você. F
   const magicSound = document.getElementById('audioMagic');
   const kissSound = document.getElementById('audioKiss');
 
-  // Som ao selecionar respostas
+  // Som ao selecionar opções
   document.querySelectorAll('select').forEach(select => {
     select.addEventListener('change', () => {
       clickSound.currentTime = 0;
@@ -478,7 +406,7 @@ Prometo te amar mesmo quando não for novidade e nunca vou me cansar de você. F
     });
   });
 
-  // Som de digitação na pergunta dissertativa
+  // Som de digitação
   const q1Input = document.getElementById('q1');
   q1Input.addEventListener('input', () => {
     if (!typingSound.paused) return;
@@ -514,7 +442,10 @@ Prometo te amar mesmo quando não for novidade e nunca vou me cansar de você. F
       magicSound.play();
       window.scrollTo(0, document.body.scrollHeight);
     } else {
-      alert("Você errou algumas respostas. Confira as certas abaixo e tente novamente com carinho:\n\n" + erros.join("\n"));
+      alert("Você errou algumas respostas. Confira as certas abaixo e tente novamente com carinho:
+
+" + erros.join("
+"));
     }
   }
 
@@ -523,18 +454,125 @@ Prometo te amar mesmo quando não for novidade e nunca vou me cansar de você. F
     love += 10;
     kissSound.currentTime = 0;
     kissSound.play();
+
+    const loveImg = document.getElementById('loveImage');
+    loveImg.style.animation = 'pulse 0.5s ease';
+    loveImg.style.boxShadow = '0 0 25px #ff69b4';
     document.getElementById('loveButton').innerText = love + '%';
+
+    setTimeout(() => {
+      loveImg.style.animation = '';
+      loveImg.style.boxShadow = '';
+    }, 600);
+
     if (love === 100) {
       document.getElementById('loveResult').style.display = 'block';
-      
-document.getElementById('loveResult').innerText = 'Feliz 4 meses, minha princesa!! Obrigada por todo esse tempo ao seu lado, amo ser sua namorada.';
-document.getElementById('loveLetter').style.display = 'block';
-const loveSong = document.getElementById('loveSong');
-loveSong.play();
-\nTodos os momentos contigo são muito importantes e significativos para mim, eu amo nossas conversas e tempo de qualidade mais que tudo. Você é minha pessoa favorita e eu faço de tudo por você, meu amor.\nAprecio muito o quanto você busca me entender e conversar sobre tudo, sinto seu carinho e apoio de forma absurda e você é a minha pessoa de conforto. Obrigada por escolher estar comigo todos os dias, mesmo vendo boa parte das minhas versões, você praticamente me conhece como um todo e continua comigo. Me apaixono mais e mais por você, a cada dia que passa. Tudo sobre você me faz ser completamente caidinha por você, minha gatinha.\nPrometo te amar mesmo quando não for novidade e nunca vou me cansar de você. Feliz 4 meses de infinitos que virão! Eu te amo, meu bem!';
+      document.getElementById('loveResult').innerText = 'Feliz 4 meses, minha princesa!! Obrigada por todo esse tempo ao seu lado, amo ser sua namorada.
+Todos os momentos contigo são muito importantes e significativos para mim, eu amo nossas conversas e tempo de qualidade mais que tudo. Você é minha pessoa favorita e eu faço de tudo por você, meu amor.
+Aprecio muito o quanto você busca me entender e conversar sobre tudo, sinto seu carinho e apoio de forma absurda e você é a minha pessoa de conforto. Obrigada por escolher estar comigo todos os dias, mesmo vendo boa parte das minhas versões, você praticamente me conhece como um todo e continua comigo. Me apaixono mais e mais por você, a cada dia que passa. Tudo sobre você me faz ser completamente caidinha por você, gatinha.
+Prometo te amar mesmo quando não for novidade e nunca vou me cansar de você. Feliz 4 meses de infinitos que virão! Eu te amo.';
+      document.getElementById('loveLetter').style.display = 'block';
+      const loveSong = document.getElementById('loveSong');
+      loveSong.play();
     }
   }
 </script>
+
+
+<audio id="audioClick" src="click.mp3"></audio>
+<audio id="audioTyping" src="typing.mp3" loop></audio>
+<audio id="audioSubmit" src="submit.mp3"></audio>
+<audio id="audioMagic" src="magic.mp3"></audio>
+<audio id="audioKiss" src="kiss.mp3"></audio>
+
+
+<script>
+  const clickSound = document.getElementById('audioClick');
+  const typingSound = document.getElementById('audioTyping');
+  const submitSound = document.getElementById('audioSubmit');
+  const magicSound = document.getElementById('audioMagic');
+  const kissSound = document.getElementById('audioKiss');
+
+  // Som ao selecionar opções
+  document.querySelectorAll('select').forEach(select => {
+    select.addEventListener('change', () => {
+      clickSound.currentTime = 0;
+      clickSound.play();
+    });
+  });
+
+  // Som de digitação
+  const q1Input = document.getElementById('q1');
+  q1Input.addEventListener('input', () => {
+    if (!typingSound.paused) return;
+    typingSound.currentTime = 0;
+    typingSound.play();
+    clearTimeout(q1Input._typingTimeout);
+    q1Input._typingTimeout = setTimeout(() => {
+      typingSound.pause();
+    }, 1000);
+  });
+
+  function startLoveMeter() {
+    const q1 = document.getElementById('q1').value.trim();
+    const q2 = document.getElementById('q2').value;
+    const q3 = document.getElementById('q3').value;
+    const q4 = document.getElementById('q4').value;
+    const q5 = document.getElementById('q5').value;
+
+    submitSound.currentTime = 0;
+    submitSound.play();
+
+    let erros = [];
+
+    if (q1 !== '11/09') erros.push("1. Quando nos conhecemos? Resposta correta: 11/09");
+    if (q2 !== '23/11') erros.push("2. Dia em que assistimos Arcane juntos: 23/11");
+    if (q3 !== 'Castanho escuro') erros.push("3. Cor do olho: Castanho escuro");
+    if (q4 !== 'Eu te amo da Lua até Saturno') erros.push("4. Frase favorita: Eu te amo da Lua até Saturno");
+    if (q5 !== 'Aborgue') erros.push("5. Comida predileta: Aborgue");
+
+    if (erros.length === 0) {
+      document.getElementById('meterSection').style.display = 'block';
+      magicSound.currentTime = 0;
+      magicSound.play();
+      window.scrollTo(0, document.body.scrollHeight);
+    } else {
+      alert("Você errou algumas respostas. Confira as certas abaixo e tente novamente com carinho:
+
+" + erros.join("
+"));
+    }
+  }
+
+  function increaseLove() {
+    if (love >= 100) return;
+    love += 10;
+    kissSound.currentTime = 0;
+    kissSound.play();
+
+    const loveImg = document.getElementById('loveImage');
+    loveImg.style.animation = 'pulse 0.5s ease';
+    loveImg.style.boxShadow = '0 0 25px #ff69b4';
+    document.getElementById('loveButton').innerText = love + '%';
+
+    setTimeout(() => {
+      loveImg.style.animation = '';
+      loveImg.style.boxShadow = '';
+    }, 600);
+
+    if (love === 100) {
+      document.getElementById('loveResult').style.display = 'block';
+      document.getElementById('loveResult').innerText = 'Feliz 4 meses, minha princesa!! Obrigada por todo esse tempo ao seu lado, amo ser sua namorada.
+Todos os momentos contigo são muito importantes e significativos para mim, eu amo nossas conversas e tempo de qualidade mais que tudo. Você é minha pessoa favorita e eu faço de tudo por você, meu amor.
+Aprecio muito o quanto você busca me entender e conversar sobre tudo, sinto seu carinho e apoio de forma absurda e você é a minha pessoa de conforto. Obrigada por escolher estar comigo todos os dias, mesmo vendo boa parte das minhas versões, você praticamente me conhece como um todo e continua comigo. Me apaixono mais e mais por você, a cada dia que passa. Tudo sobre você me faz ser completamente caidinha por você, gatinha.
+Prometo te amar mesmo quando não for novidade e nunca vou me cansar de você. Feliz 4 meses de infinitos que virão! Eu te amo.';
+      document.getElementById('loveLetter').style.display = 'block';
+      const loveSong = document.getElementById('loveSong');
+      loveSong.play();
+    }
+  }
+</script>
+
 
 </body>
 </html>
